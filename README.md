@@ -64,7 +64,7 @@ $ cybersentry analyze samples/sample_auth.log
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cybersentry.git
+git clone https://github.com/M-MOHAAMED-IRFAN-MN/cybersentry.git
 cd cybersentry
 
 # (Optional) create a virtual environment
