@@ -9,6 +9,8 @@
 
 > A command-line toolkit for **Security Operations Center (SOC)** analysts and **penetration testers** — combining port scanning, IP threat intelligence, and log-based anomaly detection in one cohesive tool.
 
+⭐ Star this repo if you find it useful!
+
 ---
 
 ## ✨ Features
