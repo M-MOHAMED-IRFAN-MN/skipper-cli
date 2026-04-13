@@ -9,6 +9,8 @@
 
 > A command-line toolkit for **Security Operations Center (SOC)** analysts and **penetration testers** — combining port scanning, IP threat intelligence, and log-based anomaly detection in one cohesive tool.
 
+⭐ Star this repo if you find it useful!
+
 ---
 
 ## ✨ Features
@@ -62,7 +64,7 @@ $ cybersentry analyze samples/sample_auth.log
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cybersentry.git
+git clone https://github.com/M-MOHAMED-IRFAN-MN/cybersentry.git
 cd cybersentry
 
 # (Optional) create a virtual environment
@@ -70,7 +72,7 @@ python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 
 # Install in editable mode
-pip install -e .
+" pip install -e . "
 ```
 
 > **Requirements:** Python 3.10+ · No third-party runtime dependencies (uses stdlib only)
@@ -196,7 +198,7 @@ print(results["open_ports"])
 
 ## 📜 License
 
-MIT © 2025 [Your Name](https://github.com/M-MOHAMED-IRFAN-MN)
+MIT © 2025 MOHAMED IRFAN
 
 ---
 
