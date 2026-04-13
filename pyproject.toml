@@ -1,17 +1,21 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cybersentry"
+name = "skipper"
 version = "1.0.0"
-description = "Python SOC Automation & Recon Toolkit"
+description = "Captain's SOC Toolkit – Free SIEM-like monitoring and recon"
 readme = "README.md"
-requires-python = ">=3.10"
-dependencies = ["pytest>=8.0"]
+requires-python = ">=3.8"
+authors = [
+    { name = "M-MOHAMED-IRFAN-MN" }
+]
+license = { text = "MIT" }
+dependencies = []
 
 [project.scripts]
-cybersentry = "cybersentry.cli:main"
+skipper = "skipper.cli:main"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+[tool.setuptools]
+packages = ["skipper"]

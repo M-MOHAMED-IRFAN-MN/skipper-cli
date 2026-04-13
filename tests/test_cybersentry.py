@@ -1,5 +1,5 @@
 """
-Tests for CyberSentry modules.
+Tests for skipper modules.
 Run: pytest tests/ -v
 """
 
@@ -9,10 +9,10 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from cybersentry.scanner import scan_port, COMMON_PORTS
-from cybersentry.log_analyzer import analyze_log, summary, AnalysisResult
-from cybersentry.reporter import _esc, generate_report
-from cybersentry.threat_intel import _risk_level
+from skipper.scanner import scan_port, COMMON_PORTS
+from skipper.log_analyzer import analyze_log, summary, AnalysisResult
+from skipper.reporter import _esc, generate_report
+from skipper.threat_intel import _risk_level
 
 
 # ── scanner tests ─────────────────────────────────────────────────────────────
@@ -30,7 +30,7 @@ class TestScanner:
         assert COMMON_PORTS[22] == "SSH"
 
     def test_scan_target_unreachable_host(self):
-        from cybersentry.scanner import scan_target
+        from skipper.scanner import scan_target
         result = scan_target("this.host.does.not.exist.invalid")
         assert "error" in result
 
@@ -105,7 +105,7 @@ class TestThreatIntel:
         assert _risk_level(25) == "MEDIUM"
 
     def test_no_api_key_returns_error(self):
-        from cybersentry import threat_intel
+        from skipper import threat_intel
         threat_intel._API_KEY = ""
         threat_intel.check_ip.cache_clear()
         result = threat_intel.check_ip("8.8.8.8")
@@ -134,5 +134,5 @@ class TestReporter:
         )
         assert os.path.exists(path)
         content = open(path, encoding="utf-8").read()
-        assert "CyberSentry" in content
+        assert "skipper" in content
         assert "127.0.0.1" in content
