@@ -198,7 +198,7 @@ print(results["open_ports"])
 
 ## 📜 License
 
-MIT © 2025 [Your Name](https://github.com/M-MOHAMED-IRFAN-MN)
+MIT © 2025 (https://github.com/M-MOHAMED-IRFAN-MN)
 
 ---
 
