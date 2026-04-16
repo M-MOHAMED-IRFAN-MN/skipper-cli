@@ -37,32 +37,29 @@ class LiveMonitor:
         return False
 
     def start(self):
-        if not os.path.exists(self.log_path):
-            print(f"[!] Error: Log file '{self.log_path}' not found.")
-            return
+    if not os.path.exists(self.log_path):
+        print(f"[!] Error: Log file '{self.log_path}' not found.")
+        return
 
-        print(f"[*] skipper Live Monitor started on: {self.log_path}")
-        print("[*] Press CTRL+C to stop.\n")
+    print(f"[*] Skipper Live Monitor started on: {self.log_path}")
+    print("[*] Press CTRL+C to stop.\n")
 
-        try:
-            with open(self.log_path, 'r', encoding='utf-8', errors='ignore') as f:
-                if self.read_existing:
-                    # Read all existing lines first
+    try:
+        with open(self.log_path, 'r', encoding='utf-8', errors='ignore') as f:
+            f.seek(0, os.SEEK_END)
+            last_pos = f.tell()
+
+            while True:
+                current_size = os.path.getsize(self.log_path)
+                if current_size < last_pos:
+                    f.seek(0)
+                    last_pos = 0
+                elif current_size > last_pos:
+                    f.seek(last_pos)
                     for line in f:
-                        line = line.rstrip('\n')
-                        if line:
-                            self.analyze_line(line)
-                    print("[*] Existing lines processed. Now tailing new entries...\n")
-
-                # Now tail for new lines
-                f.seek(0, os.SEEK_END)
-                while True:
-                    line = f.readline()
-                    if not line:
-                        time.sleep(0.5)
-                        continue
-                    self.analyze_line(line.rstrip('\n'))
-        except KeyboardInterrupt:
-            print("\n[!] Monitoring stopped.")
-        except Exception as e:
-            print(f"[!] Unexpected error: {e}")
+                        self.analyze_line(line.rstrip('\n'))
+                    last_pos = f.tell()
+                else:
+                    time.sleep(0.3)
+    except KeyboardInterrupt:
+        print("\n[!] Monitoring stopped.")
