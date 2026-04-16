@@ -179,6 +179,7 @@ def build_parser() -> argparse.ArgumentParser:
         prog="skipper",
         description="skipper — Python SOC Automation & Recon Toolkit",
     )
+    p.add_argument("--version", action="version", version="%(prog)s 1.0.0")
     sub = p.add_subparsers(dest="command", required=True)
 
     # scan
